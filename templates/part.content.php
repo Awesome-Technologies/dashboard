@@ -37,19 +37,6 @@
     <?php print_unescaped($this->inc("section.{$_['panel_3']}")); ?>
 </div>
 
-<div class="row-fluid">
-    <section class="dashboard-section">
-        <h1><a data-toggle="myCollapse" data-target="#quota"><?php p($l->t('Used space')); ?></a></h1>
-
-        <div id="quota" class="myCollapse in">
-            <div id="quota-used" style="width: <?php p($_['storage_info']['relative']); ?>%"></div>
-            <div id="quota-limit"></div>
-            <p id="quota-text"><?php print_unescaped($l->t('You have used <strong>%s</strong> of the available <strong>%s</strong>', $_['storage_info']['quota'])); ?></p>
-        </div>
-        <div style="clear: both;"></div>
-    </section>
-</div>
-
 <?php if ($_['can_create_announcements'] === true): ?>
     <div id="announcement-form">
         <form>
