@@ -9,6 +9,7 @@
  * @author regio iT gesellschaft für informationstechnologie mbh
  * @copyright regio iT 2017
  * @license GNU AGPL version 3 or any later version
+ * @contributor awesome-michael | Awesome Technologies Innovationslabor GmbH | https://www.awesome-technologies.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -44,6 +45,8 @@ class AnnouncementController extends Controller {
 	const TITLE = 'title';
 	const CONTENT = 'content';
 	const EXPIRATION = 'expiration';
+	const SEVERITY = 'severity';
+	const STATUS = 'status';
 
 	/** @var AnnouncementMapper */
 	private $announcementMapper;
@@ -104,6 +107,14 @@ class AnnouncementController extends Controller {
 					'regexp' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/'
 				],
 			],
+			static::SEVERITY   => [
+				'filter' => FILTER_SANITIZE_STRING,
+				'flags'  => FILTER_NULL_ON_FAILURE,
+			],
+			static::STATUS     => [
+				'filter' => FILTER_SANITIZE_STRING,
+				'flags'  => FILTER_NULL_ON_FAILURE,
+			],
 		];
 		$input = filter_input_array(INPUT_POST, $definition);
 
@@ -119,6 +130,8 @@ class AnnouncementController extends Controller {
 		$announcement->setExpiration($input[static::EXPIRATION]);
 		$announcement->setUserId($this->userId);
 		$announcement->setCreatedAt(date('Y-m-d H:i:s'));
+		$announcement->setStatus($input[static::STATUS]);
+		$announcement->setSeverity($input[static::SEVERITY]);
 		$this->announcementMapper->insert($announcement);
 
 		return new DataResponse($data, Http::STATUS_CREATED);
@@ -181,6 +194,14 @@ class AnnouncementController extends Controller {
 					'regexp' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/'
 				],
 			],
+			static::SEVERITY   => [
+				'filter' => FILTER_SANITIZE_STRING,
+				'flags'  => FILTER_NULL_ON_FAILURE,
+			],
+			static::STATUS     => [
+				'filter' => FILTER_SANITIZE_STRING,
+				'flags'  => FILTER_NULL_ON_FAILURE,
+			],
 		];
 		$input = filter_input_array(INPUT_POST, $definition);
 
@@ -196,6 +217,8 @@ class AnnouncementController extends Controller {
 		$entity->setExpiration($input[static::EXPIRATION]);
 		$entity->setUserId($this->userId);
 		$entity->setId(intval($id));
+		$entity->setStatus($input[static::STATUS]);
+		$entity->setSeverity($input[static::SEVERITY]);
 		$erg = $this->announcementMapper->update($entity);
 
 		return new DataResponse($data, Http::STATUS_CREATED);

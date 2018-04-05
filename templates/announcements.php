@@ -8,6 +8,7 @@
  * @author regio iT gesellschaft für informationstechnologie mbh
  * @copyright regio iT 2017
  * @license GNU AGPL version 3 or any later version
+ * @contributor awesome-michael | Awesome Technologies Innovationslabor GmbH | https://www.awesome-technologies.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -39,7 +40,7 @@
             <?php endif; ?>
         </span>
 
-        <h2><?php p($announcement->title); ?></h2>
+        <h2><?php p($announcement->severity); ?><?php p($announcement->title); ?></h2>
         <?php print_unescaped($announcement->content); ?>
     </div>
     <hr>

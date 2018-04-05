@@ -9,6 +9,7 @@
  * @author regio iT gesellschaft für informationstechnologie mbh
  * @copyright regio iT 2017
  * @license GNU AGPL version 3 or any later version
+ * @contributor awesome-michael | Awesome Technologies Innovationslabor GmbH | https://www.awesome-technologies.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -36,6 +37,8 @@ class Announcement extends Entity
 {
     public $content;
     public $title;
+    public $severity;
+    public $status;
     public $expiration;
     public $userId;
     public $createdAt;

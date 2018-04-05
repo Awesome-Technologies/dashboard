@@ -42,6 +42,18 @@
                 <type>datetime</type>
                 <notnull>true</notnull>
             </field>
+            <field>
+                <name>status</name>
+                <type>integer</type>
+                <default>0</default>
+                <notnull>true</notnull>
+            </field>
+            <field>
+                <name>severity</name>
+                <type>integer</type>
+                <default>0</default>
+                <notnull>true</notnull>
+            </field>
         </declaration>
     </table>
     <table>

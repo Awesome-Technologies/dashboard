@@ -9,6 +9,7 @@
  * @copyright regio iT 2017
  * @license GNU AGPL version 3 or any later version
  * @contributor tuxedo-rb | TUXEDO Computers GmbH | https://www.tuxedocomputers.com
+ * @contributor awesome-michael | Awesome Technologies Innovationslabor GmbH | https://www.awesome-technologies.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -44,7 +45,14 @@
             <input id="announcement-title" name="title" type="text">
             <label for="announcement-expiration"><?php p($l->t('Expiration date')); ?></label>
             <input id="announcement-expiration" name="expiration" type="date" value="<?php p($_['default_announcement_expiration_value']); ?>">
+            <select id="announcement-severity" name="severity" value="<?php p($_['default_announcement_severity']); ?>" size="1">
+                <option value="3">Info</option>
+                <option value="2">Anfrage</option>
+                <option value="1">Dringend</option>
+                <option value="0">Kritisch</option>
+            </select>
             <br>
+
             <textarea id="announcement-content" name="content" title="<?php p($l->t('Content')); ?>"></textarea>
         </form>
     </div>
@@ -58,6 +66,12 @@
             <input id="announcement-title-edit" name="title" type="text">
             <label for="announcement-expiration-edit"><?php p($l->t('Expiration date')); ?></label>
             <input id="announcement-expiration-edit" name="expiration" type="date" value="<?php p($_['default_announcement_expiration_value']); ?>">
+            <select id="announcement-severity" name="severity" value="<?php p($_['default_announcement_severity']); ?>" size="1">
+                <option value="3">Info</option>
+                <option value="2">Anfrage</option>
+                <option value="1">Dringend</option>
+                <option value="0">Kritisch</option>
+            </select>
             <br>
             <textarea id="announcement-content-edit" name="content" title="<?php p($l->t('Content')); ?>"></textarea>
         </form>
