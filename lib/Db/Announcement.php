@@ -38,7 +38,7 @@ class Announcement extends Entity
     public $content;
     public $title;
     public $severity;
-    public $status;
+    public $state;
     public $expiration;
     public $userId;
     public $createdAt;

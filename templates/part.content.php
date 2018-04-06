@@ -45,14 +45,15 @@
             <input id="announcement-title" name="title" type="text">
             <label for="announcement-expiration"><?php p($l->t('Expiration date')); ?></label>
             <input id="announcement-expiration" name="expiration" type="date" value="<?php p($_['default_announcement_expiration_value']); ?>">
+            <label for="announcement-severity"><?php p($l->t('Severity')); ?></label>
             <select id="announcement-severity" name="severity" value="<?php p($_['default_announcement_severity']); ?>" size="1">
-                <option value="3">Info</option>
-                <option value="2">Anfrage</option>
-                <option value="1">Dringend</option>
-                <option value="0">Kritisch</option>
+                <option value="4">Info</option>
+                <option value="3">Anfrage</option>
+                <option value="2">Dringend</option>
+                <option value="1">Kritisch</option>
             </select>
+            <input id="announcement-state" name="state" type="hidden" value="1">
             <br>
-
             <textarea id="announcement-content" name="content" title="<?php p($l->t('Content')); ?>"></textarea>
         </form>
     </div>
@@ -66,12 +67,14 @@
             <input id="announcement-title-edit" name="title" type="text">
             <label for="announcement-expiration-edit"><?php p($l->t('Expiration date')); ?></label>
             <input id="announcement-expiration-edit" name="expiration" type="date" value="<?php p($_['default_announcement_expiration_value']); ?>">
-            <select id="announcement-severity" name="severity" value="<?php p($_['default_announcement_severity']); ?>" size="1">
-                <option value="3">Info</option>
-                <option value="2">Anfrage</option>
-                <option value="1">Dringend</option>
-                <option value="0">Kritisch</option>
+            <label for="announcement-severity-edit"><?php p($l->t('Severity')); ?></label>
+            <select id="announcement-severity-edit" name="severity" value="<?php p($_['default_announcement_severity']); ?>" size="1">
+                <option value="4">Info</option>
+                <option value="3">Anfrage</option>
+                <option value="2">Dringend</option>
+                <option value="1">Kritisch</option>
             </select>
+            <input id="announcement-state-edit" name="state" type="hidden" value="1">
             <br>
             <textarea id="announcement-content-edit" name="content" title="<?php p($l->t('Content')); ?>"></textarea>
         </form>

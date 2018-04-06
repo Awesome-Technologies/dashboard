@@ -40,7 +40,24 @@
             <?php endif; ?>
         </span>
 
-        <h2><?php p($announcement->severity); ?><?php p($announcement->title); ?></h2>
+        <h2><?php 
+            switch ($announcement->severity) {
+                case 1:
+                    ?><img class="icon_severity" title="<?php p($l->t('Severity')); ?>" src="<?php print_unescaped(image_path('dashboard', 'severity_0.svg')); ?>"><?php 
+                    break;
+                case 2:
+                    ?><img class="icon_severity" title="<?php p($l->t('Severity')); ?>" src="<?php print_unescaped(image_path('dashboard', 'severity_1.svg')); ?>"><?php 
+                    break;
+                case 3:
+                    ?><img class="icon_severity" title="<?php p($l->t('Severity')); ?>" src="<?php print_unescaped(image_path('dashboard', 'severity_2.svg')); ?>"><?php 
+                    break;
+                case 4:
+                    ?><img class="icon_severity" title="<?php p($l->t('Severity')); ?>" src="<?php print_unescaped(image_path('dashboard', 'severity_3.svg')); ?>"><?php 
+                    break;
+            }
+            ?>
+            <?php p($announcement->title); ?>
+        </h2>
         <?php print_unescaped($announcement->content); ?>
     </div>
     <hr>

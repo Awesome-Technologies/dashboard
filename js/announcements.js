@@ -7,6 +7,7 @@
  * @author regio iT gesellschaft für informationstechnologie mbh
  * @copyright regio iT 2017
  * @license GNU AGPL version 3 or any later version
+ * @contributor awesome-michael | Awesome Technologies Innovationslabor GmbH | https://www.awesome-technologies.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -112,7 +113,9 @@
         var json = JSON.parse(entrys);
         document.getElementById("announcement-title-edit").value=json["title"];
         tinymce.get('announcement-content-edit').setContent(json["content"]);
-        document.getElementById("announcement-expiration-edit").value = json["expiration"]
+        document.getElementById("announcement-expiration-edit").value = json["expiration"];
+        document.getElementById("announcement-severity-edit").value = json["severity"];
+        document.getElementById("announcement-state-edit").value = json["state"];
     }
 
     $(document).ready(function () {

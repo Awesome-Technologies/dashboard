@@ -46,7 +46,7 @@ class AnnouncementController extends Controller {
 	const CONTENT = 'content';
 	const EXPIRATION = 'expiration';
 	const SEVERITY = 'severity';
-	const STATUS = 'status';
+	const STATE = 'state';
 
 	/** @var AnnouncementMapper */
 	private $announcementMapper;
@@ -108,12 +108,16 @@ class AnnouncementController extends Controller {
 				],
 			],
 			static::SEVERITY   => [
-				'filter' => FILTER_SANITIZE_STRING,
-				'flags'  => FILTER_NULL_ON_FAILURE,
+				'filter'  => FILTER_VALIDATE_REGEXP,
+				'options' => [
+					'regexp' => '/^[1-4]{1}$/'
+				],
 			],
-			static::STATUS     => [
-				'filter' => FILTER_SANITIZE_STRING,
-				'flags'  => FILTER_NULL_ON_FAILURE,
+			static::STATE     => [
+				'filter'  => FILTER_VALIDATE_REGEXP,
+				'options' => [
+					'regexp' => '/^[1-9]{1}$/'
+				],
 			],
 		];
 		$input = filter_input_array(INPUT_POST, $definition);
@@ -130,7 +134,7 @@ class AnnouncementController extends Controller {
 		$announcement->setExpiration($input[static::EXPIRATION]);
 		$announcement->setUserId($this->userId);
 		$announcement->setCreatedAt(date('Y-m-d H:i:s'));
-		$announcement->setStatus($input[static::STATUS]);
+		$announcement->setState($input[static::STATE]);
 		$announcement->setSeverity($input[static::SEVERITY]);
 		$this->announcementMapper->insert($announcement);
 
@@ -195,12 +199,16 @@ class AnnouncementController extends Controller {
 				],
 			],
 			static::SEVERITY   => [
-				'filter' => FILTER_SANITIZE_STRING,
-				'flags'  => FILTER_NULL_ON_FAILURE,
+				'filter'  => FILTER_VALIDATE_REGEXP,
+				'options' => [
+					'regexp' => '/^[1-4]{1}$/'
+				],
 			],
-			static::STATUS     => [
-				'filter' => FILTER_SANITIZE_STRING,
-				'flags'  => FILTER_NULL_ON_FAILURE,
+			static::STATE     => [
+				'filter'  => FILTER_VALIDATE_REGEXP,
+				'options' => [
+					'regexp' => '/^[1-9]{1}$/'
+				],
 			],
 		];
 		$input = filter_input_array(INPUT_POST, $definition);
@@ -217,8 +225,8 @@ class AnnouncementController extends Controller {
 		$entity->setExpiration($input[static::EXPIRATION]);
 		$entity->setUserId($this->userId);
 		$entity->setId(intval($id));
-		$entity->setStatus($input[static::STATUS]);
-		$entity->setSeverity($input[static::SEVERITY]);
+		$entity->setState(intval($input[static::STATE]));
+		$entity->setSeverity(intval($input[static::SEVERITY]));
 		$erg = $this->announcementMapper->update($entity);
 
 		return new DataResponse($data, Http::STATUS_CREATED);
